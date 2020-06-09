@@ -144,7 +144,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
         _translate = QtCore.QCoreApplication.translate
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        self.fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
+        self.fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*)", options=options)
         if self.fileName!="":
             self.file_name_label.setText(self.fileName)
             data=auto_pastebin.read_file(self.fileName)

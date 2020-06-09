@@ -19,6 +19,11 @@ class Ui_MainWindow(QtWidgets.QWidget):
         font_calibri_12 = QtGui.QFont()
         font_calibri_12.setFamily("Calibri")
         font_calibri_12.setPointSize(12)
+        font_code=QtGui.QFont()
+        font_code.setFamily("Courier")
+        font_code.setStyleHint(QtGui.QFont.Monospace)
+        font_code.setFixedPitch(True)
+        font_code.setPointSize(12)
         
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -28,9 +33,12 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.paste_btn.setObjectName("paste_btn")
         self.paste_btn.clicked.connect(self.paster)
 
-        self.code_box = QtWidgets.QTextEdit(self.centralwidget)
+        self.code_box = QtWidgets.QPlainTextEdit(self.centralwidget)
         self.code_box.setGeometry(QtCore.QRect(13, 160, 381, 191))
         self.code_box.setObjectName("code_box")
+        self.code_box.setFont(font_code)
+        self.metrics=QtGui.QFontMetrics(font_code)
+        self.code_box.setTabStopWidth(self.metrics.width(' ')*4)
         
         self.code_box_label = QtWidgets.QLabel(self.centralwidget)
         self.code_box_label.setGeometry(QtCore.QRect(20, 140, 47, 13))
@@ -88,7 +96,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", ""))
         self.paste_btn.setText(_translate("MainWindow", "Paste"))
         self.code_box_label.setText(_translate("MainWindow", "Text"))
         self.open_file_btn.setText(_translate("MainWindow", "Open a file"))

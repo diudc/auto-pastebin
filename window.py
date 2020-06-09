@@ -109,21 +109,22 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
     def paster(self):
         data=""
-        if self.namef.text()=="":
+        if self.username_input_field.text()=="":
             data= {
 	            'poster':getpass.getuser(),
 	            'syntax':'text',
-	            'content': self.code.toPlainText()
+	            'content': self.code_box.toPlainText()
 	        }
         else:
              data= {
-	            'poster':self.namef.text(),
+	            'poster':self.username_input_field.text(),
 	            'syntax':'text',
-	            'content': self.code.toPlainText()
+	            'content': self.code_box.toPlainText()
 	        }
+        
         response=auto_pastebin.post_req(data,"https://pastebin.ubuntu.com/")
         if response.ok:
-           self.urll.setText(response.url)
+           self.url_text.setText(response.url)
            pyperclip.copy(response.url)
         else:
            self.urll.setText("Error!")

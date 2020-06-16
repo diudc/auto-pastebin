@@ -5,6 +5,8 @@ from PyQt5.QtWidgets import QInputDialog, QLineEdit, QFileDialog
 import auto_pastebin
 import getpass
 import pyperclip
+
+
 class Ui_MainWindow(QtWidgets.QWidget):
     fileName=""
     def setupUi(self, MainWindow):
@@ -170,6 +172,8 @@ class Ui_MainWindow(QtWidgets.QWidget):
            pyperclip.copy(response.url)
         else:
            self.urll.setText("Error!")
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

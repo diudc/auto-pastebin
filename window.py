@@ -102,16 +102,20 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.url_label.setObjectName("url_label")
         self.url_label.setSizePolicy(QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum))
         
-        self.url_text = QtWidgets.QLabel(self.verticalLayoutWidget)
-        self.url_text.setFont(font_calibri_14)
-        self.url_text.setText("")
-        self.url_text.setObjectName("url_text")
+       
+        
+        self.url_box= QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.url_box.setFont(font_calibri_12)
+        self.url_box.setText("")
+        self.url_box.setObjectName("url_box")
+        
 
         self.h3 = QtWidgets.QHBoxLayout()
         self.h3.setObjectName("h3")
 
         self.h3.addWidget(self.url_label)
-        self.h3.addWidget(self.url_text)
+
+        self.h3.addWidget(self.url_box)
         self.h3.setContentsMargins(5,5,5,5)
 
         self.verticalLayout.addLayout(self.h3)       
@@ -151,6 +155,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
             self.file_name_label.setText(self.fileName)
             data=auto_pastebin.read_file(self.fileName)
             self.code_box.setPlainText(data)
+
     def paster(self):
         data=""
         if self.username_input_field.text()=="":
@@ -168,10 +173,10 @@ class Ui_MainWindow(QtWidgets.QWidget):
         
         response=auto_pastebin.post_req(data,"https://pastebin.ubuntu.com/")
         if response.ok:
-           self.url_text.setText(response.url)
+           self.url_box.setText(response.url)
            pyperclip.copy(response.url)
         else:
-           self.urll.setText("Error!")
+           self.url_box.setText("Error!")
 
 
 if __name__ == "__main__":

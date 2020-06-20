@@ -1,8 +1,11 @@
-# auto-pastebin
+# Auto-pastebin
 Desktop application for instant code snippet sharing
 
+# Screenshot
+![Screenshot_2](https://user-images.githubusercontent.com/24731446/85190497-dedf1d00-b2da-11ea-8e40-4b18e831496d.png)
 
-# requirements 
+
+# Requirements 
   
   python 3
   PyQt5
@@ -13,13 +16,13 @@ Desktop application for instant code snippet sharing
  
 # Usage
 
-# GUI     
+## GUI     
       You can open a file and edit it in the codebox before pasting it.
       or 
       You can paste something in the codebox without even opening any file .
       
  
-# CLI
+## CLI
 
   python3 auto_pastebin.py "path to your file" "an optional username"
   

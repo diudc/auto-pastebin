@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QInputDialog, QLineEdit, QFileDialog
 import auto_pastebin
 import getpass
 import pyperclip
-
+import syntax_pars
 
 class Ui_MainWindow(QtWidgets.QWidget):
     fileName=""
@@ -82,11 +82,12 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.code_box.setFont(font_code)
         self.metrics=QtGui.QFontMetrics(font_code)
         self.code_box.setTabStopWidth(self.metrics.width(' ')*4)
-        
+        self.highlight = syntax_pars.PythonHighlighter(self.code_box.document())
+
         self.code_box_label = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.code_box_label.setFont(font_calibri_12)
         self.code_box_label.setObjectName("code_box_label")
-        
+
         self.paste_btn= QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.paste_btn.setObjectName("paste_btn")
         self.paste_btn.clicked.connect(self.paster)
